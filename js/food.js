@@ -12,7 +12,7 @@ class Food {
         let foodY = this.y + this.height / 2;
         let playerX = playerInfo.x + playerInfo.width / 2;
         let playerY = playerInfo.y + playerInfo.height / 2;
-        if (dist(foodX, foodY, playerX, playerY) > 25) {
+        if (dist(foodX, foodY, playerX, playerY) > 50) {
             return false; 
           } else {
             return true;

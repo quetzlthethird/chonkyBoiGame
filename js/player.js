@@ -5,10 +5,17 @@ class Player {
         this.width = 80;
         this.x = 0;
         this.y = height - this.height;
+        this.gravity = 0.2;
+        this.velocity = 0;
         this.score = 0;
     }
 
     drawPlayer(){
+        this.velocity += this.gravity;
+        this.y += this.velocity;
+        if (this.y >= height - this.height) {
+            this.y = height - this.height;
+        }
         image(this.image, this.x, this.y);
     }
 
@@ -19,7 +26,7 @@ class Player {
         // this.image = loadImage('assets/character-left.png');
     }
     moveRight() {
-        if (this.x < 1000-this.width){
+        if (this.x < 950-this.width){
         this.x += 100
         }
         // this.image = loadImage('assets/character-right.png');
@@ -29,9 +36,16 @@ class Player {
         let playerScoreCard = document.getElementById('player1')
         console.log(playerScoreCard);
         playerScoreCard.innerText = player.score;
-        console.log(playerScore);
+        // console.log(playerScore);
     }
-}
+
+    jump() {
+        if (this.y === height - this.height) {
+          this.velocity = -17;  //17
+          console.log("this will be the jump");
+        }
+      }
+} 
 
 // class Player2 extends Player {
 //     constructor(playerImage){

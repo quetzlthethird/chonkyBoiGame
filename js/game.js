@@ -17,6 +17,7 @@ class Game {
     setupGame() {
         console.log("this is the game setup");
         this.player = new Player(this.playerImage);
+        // background = white;
         // this.player = new Player2(this.player2Image);
         // this.background = new Background(this.backgroundImages);
     }

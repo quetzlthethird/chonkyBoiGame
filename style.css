@@ -1,3 +1,13 @@
+body {
+    background-color: royalblue;
+    border: 2px solid black;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 h1  {
     text-align: center;
     font-size: 36px;
@@ -7,3 +17,14 @@ section {
     text-align: center;
     font-size: 36px;
 }
+
+canvas {
+    border-radius: 12px;
+    margin: 5vh;
+  }
+
+.gametitle {
+    color: white;
+    margin-top: 5vh;
+    border: 5px solid green;
+  }
