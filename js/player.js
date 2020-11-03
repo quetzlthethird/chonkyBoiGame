@@ -4,7 +4,7 @@ class Player {
         this.height = 78;
         this.width = 80;
         this.x = 0;
-        this.y = height - this.height;
+        this.y = 750 - this.height;
         this.gravity = 0.2;
         this.velocity = 0;
         // this.score = 0;
@@ -16,7 +16,7 @@ class Player {
         if (this.y >= height - this.height) {
             this.y = height - this.height;
         }
-        image(this.image, this.x, this.y);
+        image(this.image, this.x, this.y-25);
     }
     moveLeft() {
         if (this.x >0){

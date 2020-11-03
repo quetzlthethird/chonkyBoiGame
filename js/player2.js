@@ -16,7 +16,7 @@ class Player2 {
         if (this.y >= height - this.height) {
             this.y = height - this.height;
         }
-        image(this.image, this.x, this.y);
+        image(this.image, this.x, this.y-25);
     }
     moveLeft() {
         if (this.x >0){

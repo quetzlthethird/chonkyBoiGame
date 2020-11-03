@@ -23,7 +23,7 @@ class Dagger {
     
     drawFood() {
         this.x--;
-        image(this.image, this.x, this.y, this.width, this.height);
+        image(this.image, this.x, this.y-50, this.width, this.height);
         this.collision(game.player);
     }
 

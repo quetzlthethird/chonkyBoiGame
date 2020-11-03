@@ -15,10 +15,10 @@ function setup() {
 // }
 
 function draw() {
-    background(178, 214, 187);
-    rectangle();
+    // background(178, 214, 187);
+    // rectangle();
   
-    // clear();
+    clear();
     game.drawGame();
     // if (keyIsDown(39)) {
     //     game.player.moveRight();
@@ -30,11 +30,11 @@ function draw() {
     // }
 }
 
-function rectangle() {
-    stroke(255);
-    // fill(255,255,255,100);
-    // rect(70,70,60,60,10);
-  }
+// function rectangle() {
+//     stroke(255);
+//     // fill(255,255,255,100);
+//     // rect(70,70,60,60,10);
+//   }
   
 function keyPressed(){ 
     //player1 = arrows

@@ -12,19 +12,17 @@ class Food {
         let foodY = this.y + this.height / 2;
         let playerX = playerInfo.x + playerInfo.width / 2;
         let playerY = playerInfo.y + playerInfo.height / 2;
-        // let player2x =
 
         if (dist(foodX, foodY, playerX, playerY) > 50) {
             return false; 
           } else {
             return true;
-      }
-      
+        }
     }
     
     drawFood() {
         this.y++;
-        image(this.image, this.x, this.y, this.width, this.height);
+        image(this.image, this.x-50, this.y, this.width, this.height);
         this.collision(game.player);
     }
 
