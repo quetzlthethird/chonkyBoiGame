@@ -7,7 +7,7 @@ class Player2 {
         this.y = height - this.height;
         this.gravity = 0.2;
         this.velocity = 0;
-        this.score = 0;
+        // this.score = 0;
     }
 
     drawPlayer(){
@@ -18,7 +18,6 @@ class Player2 {
         }
         image(this.image, this.x, this.y);
     }
-
     moveLeft() {
         if (this.x >0){
         this.x -= 100
@@ -32,12 +31,12 @@ class Player2 {
         // this.image = loadImage('assets/character-right.png');
     }
 
-    addPoint() {
-        let playerScoreCard2 = document.getElementById('player2')
-        // console.log(playerScoreCard);
-        playerScoreCard2.innerText = this.score;
-        // console.log(playerScore);
-    }
+    // addPoint() {
+    //     let playerScoreCard2 = document.getElementById('player2')
+    //     // console.log(playerScoreCard);
+    //     playerScoreCard2.innerText = this.score;
+    //     // console.log(playerScore);
+    // }
 
     jump() {
         if (this.y === height - this.height) {
@@ -45,6 +44,4 @@ class Player2 {
         //   console.log("this will be the jump");
         }
       }
-
-
 } //ends class

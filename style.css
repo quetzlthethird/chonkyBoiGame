@@ -3,7 +3,7 @@ body {
     border: 2px solid black;
     margin: 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -13,18 +13,19 @@ h1  {
     font-size: 36px;
 }
 
+/* remove once .innertext is removed */
 section {
     text-align: center;
-    font-size: 36px;
+    font-size: 1px;
 }
 
 canvas {
     border-radius: 12px;
-    margin: 5vh;
+    margin: 2vh;
   }
 
 .gametitle {
     color: white;
-    margin-top: 5vh;
+    margin-top: 2vh;
     border: 5px solid green;
   }
