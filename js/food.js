@@ -3,8 +3,8 @@ class Food {
         this.image = burgerImage;
         this.x = (Math.random() * width);
         this.y = 0;
-        this.width = 150;
-        this.height = 78;
+        this.width = 100;
+        this.height = 100;
     }
 
     collision(playerInfo) {
@@ -12,6 +12,8 @@ class Food {
         let foodY = this.y + this.height / 2;
         let playerX = playerInfo.x + playerInfo.width / 2;
         let playerY = playerInfo.y + playerInfo.height / 2;
+        // let player2x =
+
         if (dist(foodX, foodY, playerX, playerY) > 50) {
             return false; 
           } else {

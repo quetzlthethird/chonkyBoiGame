@@ -1,9 +1,9 @@
-class Player {
-    constructor(playerImage){
-        this.image = playerImage;
+class Player2 {
+    constructor(player2Image){
+        this.image = player2Image;
         this.height = 78;
-        this.width = 80;
-        this.x = 0;
+        this.width = 83;
+        this.x = 900;
         this.y = height - this.height;
         this.gravity = 0.2;
         this.velocity = 0;
@@ -33,9 +33,9 @@ class Player {
     }
 
     addPoint() {
-        let playerScoreCard = document.getElementById('player1')
+        let playerScoreCard2 = document.getElementById('player2')
         // console.log(playerScoreCard);
-        playerScoreCard.innerText = this.score;
+        playerScoreCard2.innerText = this.score;
         // console.log(playerScore);
     }
 
@@ -45,4 +45,6 @@ class Player {
         //   console.log("this will be the jump");
         }
       }
-} 
+
+
+} //ends class

@@ -3,6 +3,7 @@ const game = new Game();
 function preload() {
   game.preloadGame();
 }
+
 function setup() {
   const canvas = createCanvas(1000, 800);
   canvas.style ('display','block');
@@ -14,7 +15,7 @@ function setup() {
 // }
 
 function draw() {
-    background(255,255,255);
+    background(178, 214, 187);
     rectangle();
   
     // clear();
@@ -31,21 +32,12 @@ function draw() {
 
 function rectangle() {
     stroke(255);
-    fill(255,255,255,100);
-    rect(70,70,60,60,10);
+    // fill(255,255,255,100);
+    // rect(70,70,60,60,10);
   }
   
 function keyPressed(){ 
-    // if (keyCode === 40) { //down a row
-    //     clear();
-    //     game.player.moveDown();
-    //     // win();
-    //   // storeItem('playerPosition', player.row);
-    // } 
-    // if (keyCode === 38) {
-    //     game.player.moveUp();
-    //     // win();
-    // }
+    //player1 = arrows
     if (keyCode === 39) {
         clear();
         game.player.moveRight();
@@ -56,13 +48,25 @@ function keyPressed(){
         game.player.moveLeft();
         // win();
     }
-    if (keyCode === 32) {
+    if (keyCode === 38) {
         game.player.jump();
+    }
+
+    //player2 awd
+    if (keyCode === 68) {
+        clear();
+        game.player2.moveRight();
+        // win();
+    }
+    if (keyCode === 65) {
+        clear();
+        game.player2.moveLeft();
+        // win();
+    }
+    if (keyCode === 87) {
+        game.player2.jump();
     }
     
 }
 
-function addPoint() {
-    let playerScore = document.getElementById('player1').innerText = player.score;
-}
 
