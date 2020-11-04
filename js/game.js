@@ -2,7 +2,7 @@ let gameScore1 = 0;
 let gameScore2 = 0;
 let zeroPoints = 0;
 let fontGameStyle
-let winScore = 1;
+let winScore = 100;
 let gameState = 0;
 // 0 = start menu
 // 1 = game running

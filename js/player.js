@@ -44,4 +44,8 @@ class Player {
         //   console.log("this will be the jump");
         }
       }
+
+    fastDown() {
+            this.velocity += 10 ;  //17
+    } 
 } //ends class

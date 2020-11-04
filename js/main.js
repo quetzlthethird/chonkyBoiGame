@@ -3,10 +3,12 @@ const keys = {
     arrowLeftP1 : 65,
     arrowRightP1 : 68,
     arrowJumpP1 : 87,
+    arrowDownP1 : 83,
 
     arrowLeftP2 :37,
     arrowRightP2: 39,
     arrowJumpP2 : 38,
+    arrowDownP2 : 40,
 
     restart: 32
 }
@@ -31,14 +33,13 @@ function draw() {
   
     clear();
     game.drawGame();
-    // if (keyIsDown(39)) {
-    //     game.player.moveRight();
-    //     // win();
-    // }
-    // if (keyIsDown(37)) {
-    //     game.player.moveLeft();
-    //     // win();
-    // }
+
+    if (keyIsDown(keys.arrowDownP1)) {
+        game.player.fastDown();
+    }
+    if (keyIsDown(keys.arrowDownP2)) {
+        game.player2.fastDown();
+    }
 }
 
 // function rectangle() {
@@ -60,7 +61,8 @@ function keyPressed()    {
         if (keyCode === keys.arrowJumpP1) {
                 clear();
                 game.player.jump();
-        }  
+        } 
+    
         if (keyCode === keys.arrowRightP2) {
                 clear();
                 game.player2.moveRight();
@@ -72,6 +74,16 @@ function keyPressed()    {
         if (keyCode === keys.arrowJumpP2) {
             clear();
             game.player2.jump();
+        }
+
+        if (keyCode === keys.arrowDownP1) {
+            clear();
+            game.player.fastDown();
+        }
+
+        if (keyCode === keys.arrowDownP2) {
+            clear();
+            game.player2.fastDown();
         }
     } else {
         if (keyCode === keys.restart) {
