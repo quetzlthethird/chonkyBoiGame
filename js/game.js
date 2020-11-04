@@ -71,40 +71,34 @@ class Game {
             // press space!`, width/2, height/2);
 
         } else {
-            // console.log(gameState)
             frameRate(60);
-            // console.log('test')
             this.background.drawBackground();
-            this.player.drawPlayer();
-            this.player2.drawPlayer();
-            // this.BackgroundBorder.drawBorder();
-
     // ===========================================================================        
-            //player 1 score
-            // fill (243,106,39); //orange box
-            // // strokeWeight(50);
-            // rect(20, 0, 220, 80, 20, 20, 20 ,20);
-            // strokeWeight(0); 
+            fill (255,255,255,50); // dim the backgroun
+            strokeWeight(50);
+            rect(-50, 0, 1200, 800, 20, 20, 20 ,20);
 
             stroke(60,31,62); // light dark purple under layer
+            // strokeWeight(5); 
+            strokeWeight(50);
+            fill (0,0,0,0);
+            rect(-50, 5, 1200, 800, 20, 20, 20 ,20);
+            
+            stroke(60,31,62); // light dark purple under p1 layer
             strokeWeight(5); 
             fill(19,17,28); 
             rect(30, 20, 200, 50, 10, 10, 20 ,20); 
             strokeWeight(0); // removes the stroke from the text
 
-            fill(255, 255, 255);
-            textSize(25);
-            // fill(243,106,39);
-            // // strokeWeight(1);
-            text(`Gingerboy: ${gameScore1}`, 55, 50);
-
-            // stroke(60,31,62); // light dark purple under layer
-            // strokeWeight(5); 
+            stroke(60,31,62); // light dark purple under layer
+            strokeWeight(5); 
+            strokeWeight(50);
+            fill (0,0,0,0);
+            rect(-50, 0, 1200, 800, 20, 20, 20 ,20);
             // fill(19,17,28); 
             // rect(30, 20, 200, 50, 10, 10, 20 ,20); 
             // strokeWeight(0); // removes the stroke from the text
-            
-            //player 2 score
+        
             stroke(60,31,62); // add a stroke around rect with color white
             strokeWeight(5); // thickness 
             fill(19,17,28);
@@ -113,8 +107,12 @@ class Game {
 
             fill(255, 255, 255);
             textSize(25);
-            text(`Void boy: ${gameScore2} `, 810, 50);
+            text(`Gingerboy: ${gameScore1}`, 127, 40); 
+            text(`Void boy: ${gameScore2} `, 880 , 40);
 
+// ===========================================================================
+            this.player.drawPlayer();
+            this.player2.drawPlayer();
     // ===========================================================================
             //burgers from sky
             if (frameCount % 100 === 0 ) {
@@ -251,7 +249,7 @@ class Game {
 
         frameRate(0);
         console.log( `^win menu gameState: ${gameState} (Should be 2)`) 
-        console.log(typeof this.foods)
+        // console.log(typeof this.foods)
 
         this.winRectangle();
         textAlign(CENTER,CENTER);
