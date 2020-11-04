@@ -42,11 +42,6 @@ function draw() {
     }
 }
 
-// function rectangle() {
-//     stroke(255);
-//     // fill(255,255,255,100);
-//     // rect(70,70,60,60,10);
-//   }
   
 function keyPressed()    {
     if (gameState === 1) {

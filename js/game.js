@@ -18,13 +18,13 @@ class Game {
     }
     
     preloadGame() {
-        fontGameStyle = loadFont("../font/TurretRoad-ExtraBold.ttf");
-        this.playerImage = loadImage("../assets/ginger.png");
-        this.player2Image = loadImage("../assets/pepper.png");
-        this.burgerImage = loadImage("../assets/burger2.png");
-        this.daggerImage = loadImage("../assets/PixelArt.png");
-        this.cleaverImage = loadImage("../assets/PikPng.com_cleaver-png_5503819.png"); // , speed: 1 
-        this.backgroundImage = loadImage("../assets/cyberpunkbackground.png");
+        fontGameStyle = loadFont("../../font/TurretRoad-ExtraBold.ttf");
+        this.playerImage = loadImage("../../assets/ginger.png");
+        this.player2Image = loadImage("../../assets/pepper.png");
+        this.burgerImage = loadImage("../../assets/burger2.png");
+        this.daggerImage = loadImage("../../assets/PixelArt.png");
+        this.cleaverImage = loadImage("../../assets/PikPng.com_cleaver-png_5503819.png"); // , speed: 1 
+        this.backgroundImage = loadImage("../../assets/cyberpunkbackground.png");
     }
 
     setupGame() {
@@ -113,7 +113,7 @@ class Game {
 // ===========================================================================
             this.player.drawPlayer();
             this.player2.drawPlayer();
-    // ===========================================================================
+// ===========================================================================
             //burgers from sky
             if (frameCount % 100 === 0 ) {
                 // console.log('burgertime')
