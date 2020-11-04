@@ -44,6 +44,15 @@ class Game {
         // background = white;
         // this.player = new Player2(this.player2Image);
         // this.background = new Background(this.backgroundImages);
+        for (var i = this.foods.length - 1; i >= 0; i--) {
+                this.foods.splice(i, 1);
+        }
+        for (var i = this.daggers.length - 1; i >= 0; i--) {
+            this.daggers.splice(i, 1);
+        }
+        for (var i = this.cleavers.length - 1; i >= 0; i--) {
+            this.cleavers.splice(i, 1);
+        }
     }
   
     
@@ -228,8 +237,22 @@ class Game {
 // ===========================================================================
 
     winPlayer1() {
+        // for (let food in this.foods) {
+        //     this.foods.splice(food,1);
+        // }
+        // for (let food in this.foods) delete this.foods[food];
+
+        // for (var i = this.foods.length - 1; i >= 0; i--) {
+        //     // if (this.foods[i] === number) {
+        //         this.foods.splice(i, 1);
+        //     // }
+        //    }
+        //this removes some, but not all
+
         frameRate(0);
         console.log( `^win menu gameState: ${gameState} (Should be 2)`) 
+        console.log(typeof this.foods)
+
         this.winRectangle();
         textAlign(CENTER,CENTER);
         text(`Gingercat wins! 
