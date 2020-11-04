@@ -1,29 +1,34 @@
 let gameScore1 = 0;
 let gameScore2 = 0;
+let zeroPoints = 0;
+let fontGameStyle
+let winScore = 10;
 
 class Game {
     constructor() {
         this.foods = [];
         this.daggers = [];
         this.cleavers = [];
+
     }
     
     preloadGame() {
-        console.log("this is the game preload");
+        fontGameStyle = loadFont("../font/TurretRoad-ExtraBold.ttf");
         this.playerImage = loadImage("../assets/ginger.png");
         this.player2Image = loadImage("../assets/pepper.png");
         this.burgerImage = loadImage("../assets/burger2.png");
         this.daggerImage = loadImage("../assets/PixelArt.png");
         this.cleaverImage = loadImage("../assets/PikPng.com_cleaver-png_5503819.png"); // , speed: 1 
         this.backgroundImage = loadImage("../assets/cyberpunkbackground.png");
-        // this.backgroundImages = [
-        //     { src: loadImage("../assets/pixelBackground/Background/Purple.png"), x: 0, y:0, speed: 0 },
-        //     { src: loadImage("../assets/pixelBackground/Background/Green.png"), x: 0, y:0, speed: 0.5 },
-        // ];
     }
 
     setupGame() {
-        // console.log("this is the game setup");
+        clear();
+        gameScore1 = zeroPoints;
+        gameScore2 = zeroPoints;
+        textFont(fontGameStyle)
+        console.log("this is the game setup");
+
         this.player = new Player(this.playerImage);
         this.player2 = new Player2(this.player2Image);
         this.background = new Background(this.backgroundImage)
@@ -38,6 +43,8 @@ class Game {
   
     
     drawGame() {
+        frameRate(60);
+        // console.log('test')
         this.background.drawBackground();
         this.player.drawPlayer();
         this.player2.drawPlayer();
@@ -71,7 +78,7 @@ class Game {
 
         fill(255, 255, 255);
         textSize(25);
-        text(`Black cat: ${gameScore2}`, 810, 50);
+        text(`Void boy: ${gameScore2} `, 810, 50);
 
 // ===========================================================================
         //burgers from sky
@@ -86,7 +93,7 @@ class Game {
         //player1collision
         this.foods = this.foods.filter((food) => {
             if (!food.collision(this.player)) {
-                if (gameScore1 === 2) {
+                if (gameScore1 >= winScore) {
                     // clear();
                     game.winPlayer1();
                 }  
@@ -103,7 +110,7 @@ class Game {
         //player2collision
         this.foods = this.foods.filter((food) => {
             if (!food.collision(this.player2)) {
-                if (gameScore2 === 2) {
+                if (gameScore2 >= winScore) {
                     game.winPlayer2();
                 }
               return true;
@@ -191,25 +198,19 @@ class Game {
 // ===========================================================================
 
     winPlayer1() {
-        // clear();
-        noLoop();
         frameRate(0);       
         this.winRectangle();
         text(`Gingercat wins! 
         Press any key to replay the game`, width/2, height/2);
-        textAlign(50 ,50);
-        game.preloadGame();
-        game.setupGame();
+        textAlign(CENTER,CENTER);
     }
 
     winPlayer2() {
         frameRate(0);       
         this.winRectangle();
-        textAlign(50 ,50);
-        text(`Blackcat wins! 
+        textAlign(CENTER,CENTER);
+        text(`Void cat wins! 
         Press any key to replay the game`, width/2, height/2);
-        
-        // game.setupGame();
     }
 
     winRectangle (){

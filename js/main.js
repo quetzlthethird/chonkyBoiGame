@@ -1,5 +1,15 @@
 const game = new Game();
 let running = true;
+const keys = {
+    arrowLeftP1 : 65,
+    arrowRightP1 : 68,
+    arrowJumpP1 : 87,
+
+    arrowLeftP2 :37,
+    arrowRightP2: 39,
+    arrowJumpP2 : 38,
+    restart: 32
+}
 
 function preload() {
   game.preloadGame();
@@ -37,43 +47,43 @@ function draw() {
 //     // rect(70,70,60,60,10);
 //   }
   
-function keyPressed(){ 
-    
-    // if running = !running
-    
-    //player1 = arrows
-    if (keyCode === 39) {
+function keyPressed()    {  
+    // if (gameIsRunning) {
+    if (keyCode === keys.arrowRightP1) {
+            clear();
+            game.player.moveRight();
+    }  
+    if (keyCode === keys.arrowLeftP1) {
+            clear();
+            game.player.moveLeft();
+    }  
+    if (keyCode === keys.arrowJumpP1) {
+            clear();
+            game.player.jump();
+    }  
+    if (keyCode === keys.arrowRightP2) {
+            clear();
+            game.player2.moveRight();
+    }  
+    if (keyCode === keys.arrowLeftP2) {
+            clear();
+            game.player2.moveLeft();
+    }  
+    if (keyCode === keys.arrowJumpP2) {
         clear();
-        game.player.moveRight();
-        // win();
-    }
-    if (keyCode === 37) {
-        clear();
-        game.player.moveLeft();
-        // win();
-    }
-    if (keyCode === 38) {
-        game.player.jump();
-    }
-
-    //player2 awd
-    if (keyCode === 68) {
-        clear();
-        game.player2.moveRight();
-        // win();
-    }
-    if (keyCode === 65) {
-        clear();
-        game.player2.moveLeft();
-        // win();
-    }
-    if (keyCode === 87) {
         game.player2.jump();
     }
-    
+    if (keyCode === keys.restart && gameScore1 === winScore || gameScore2 === winScore ) {
+            // clear();
+            game.setupGame();
+            game.drawGame()
+    }  
 }
-// function update(){
-//     if (!running) return 
+
+// } else if (keyCode === keys.restart) {
+//     clear();
+//     game.setupGame();
+//     // game.drawGame();
 // }
 
-
+// function gameIsRunning(){ return gameScore < winScore && gameScore2 < winScore;}

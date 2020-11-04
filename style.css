@@ -19,16 +19,15 @@ body {
 h1  {
     text-align: center;
     font-size: 36px;
-    /* font-family: 'Turret Road', cursive; */
+    font-family: 'Turret Road', cursive;
 }
 
-/* canvas {
-    border-radius: 12px;
-    margin: 1vh;
-  }  */
+canvas {
+    /* font-family: 'Turret Road', cursive; */
+  } 
 
 .gametitle {
     color: white;
     margin-top: 2vh;
-    border: 5px solid green;
+    /* border: 5px solid green; */
   }
