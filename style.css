@@ -22,12 +22,8 @@ h1  {
     font-family: 'Turret Road', cursive;
 }
 
-canvas {
-    /* font-family: 'Turret Road', cursive; */
-  } 
-
 .gametitle {
     color: white;
     margin-top: 2vh;
-    /* border: 5px solid green; */
+    border: 5px solid green;
   }

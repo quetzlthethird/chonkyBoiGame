@@ -2,7 +2,12 @@ let gameScore1 = 0;
 let gameScore2 = 0;
 let zeroPoints = 0;
 let fontGameStyle
-let winScore = 10;
+let winScore = 1;
+let gameState = 0;
+// 0 = start menu
+// 1 = game running
+// 2 = win menu
+
 
 class Game {
     constructor() {
@@ -43,148 +48,173 @@ class Game {
   
     
     drawGame() {
-        frameRate(60);
-        // console.log('test')
-        this.background.drawBackground();
-        this.player.drawPlayer();
-        this.player2.drawPlayer();
-        // this.BackgroundBorder.drawBorder();
+        if (gameState === 0) {
+            this.winRectangle();
+            fill(255, 255, 255);
+            textSize(25);
+            // fill(243,106,39);
+            // // strokeWeight(1);
+            textAlign (CENTER,CENTER);
+            text(`Time to start meow`, width/2, height/2.2)
+            text(`Press space!`, width/2, height/1.85 )
+            this.player.drawPlayer();
+            this.player2.drawPlayer();
+            // press space!`, width/2, height/2);
 
-// ===========================================================================        
-        //player 1 score
-        // fill (243,106,39); //orange box
-        // // strokeWeight(50);
-        // rect(20, 0, 220, 80, 20, 20, 20 ,20);
-        // strokeWeight(0); 
+        } else {
+            // console.log(gameState)
+            frameRate(60);
+            // console.log('test')
+            this.background.drawBackground();
+            this.player.drawPlayer();
+            this.player2.drawPlayer();
+            // this.BackgroundBorder.drawBorder();
 
-        stroke(60,31,62); // light dark purple under layer
-        strokeWeight(5); 
-        fill(19,17,28); 
-        rect(30, 20, 200, 50, 10, 10, 20 ,20); 
-        strokeWeight(0); // removes the stroke from the text
+    // ===========================================================================        
+            //player 1 score
+            // fill (243,106,39); //orange box
+            // // strokeWeight(50);
+            // rect(20, 0, 220, 80, 20, 20, 20 ,20);
+            // strokeWeight(0); 
 
-        fill(255, 255, 255);
-        textSize(25);
-        // fill(243,106,39);
-        // // strokeWeight(1);
-        text(`Gingerboy: ${gameScore1}`, 55, 50);
-        
-        //player 2 score
-        stroke(60,31,62); // add a stroke around rect with color white
-        strokeWeight(5); // thickness 
-        fill(19,17,28);
-        rect(775, 20, 200, 50, 10, 10, 20 ,20);
-        strokeWeight(0); 
+            stroke(60,31,62); // light dark purple under layer
+            strokeWeight(5); 
+            fill(19,17,28); 
+            rect(30, 20, 200, 50, 10, 10, 20 ,20); 
+            strokeWeight(0); // removes the stroke from the text
 
-        fill(255, 255, 255);
-        textSize(25);
-        text(`Void boy: ${gameScore2} `, 810, 50);
+            fill(255, 255, 255);
+            textSize(25);
+            // fill(243,106,39);
+            // // strokeWeight(1);
+            text(`Gingerboy: ${gameScore1}`, 55, 50);
 
-// ===========================================================================
-        //burgers from sky
-        if (frameCount % 100 === 0 ) {
-            // console.log('burgertime')
-            this.foods.push(new Food(this.burgerImage));
-        }
-        this.foods.forEach(function(food){
-            food.drawFood();
-        });
+            // stroke(60,31,62); // light dark purple under layer
+            // strokeWeight(5); 
+            // fill(19,17,28); 
+            // rect(30, 20, 200, 50, 10, 10, 20 ,20); 
+            // strokeWeight(0); // removes the stroke from the text
+            
+            //player 2 score
+            stroke(60,31,62); // add a stroke around rect with color white
+            strokeWeight(5); // thickness 
+            fill(19,17,28);
+            rect(775, 20, 200, 50, 10, 10, 20 ,20);
+            strokeWeight(0); 
 
-        //player1collision
-        this.foods = this.foods.filter((food) => {
-            if (!food.collision(this.player)) {
-                if (gameScore1 >= winScore) {
-                    // clear();
-                    game.winPlayer1();
-                }  
+            fill(255, 255, 255);
+            textSize(25);
+            text(`Void boy: ${gameScore2} `, 810, 50);
+
+    // ===========================================================================
+            //burgers from sky
+            if (frameCount % 100 === 0 ) {
+                // console.log('burgertime')
+                this.foods.push(new Food(this.burgerImage));
+            }
+            this.foods.forEach(function(food){
+                food.drawFood();
+            });
+
+            //player1collision
+            this.foods = this.foods.filter((food) => {
+                if (!food.collision(this.player)) {
+                    if (gameScore1 >= winScore) {
+                        // clear();
+                        gameState = 2;
+                        console.log( `^win changed gameState to ${gameState} (Should be 2)`)
+                        game.winPlayer1();
+                    }  
+                    return true;
+                } else {
+                    gameScore1++;
+                    // this.player.score += 1;
+                    // console.log(this.player.score);
+                    // let playerScoreCard = document.getElementById('player1').innerText = this.player.score;
+                    return false;
+            }
+            });  
+
+            //player2collision
+            this.foods = this.foods.filter((food) => {
+                if (!food.collision(this.player2)) {
+                    if (gameScore2 >= winScore) {
+                        gameState = 2;
+                        game.winPlayer2();
+                    }
                 return true;
-            } else {
-                gameScore1++;
-                // this.player.score += 1;
-                // console.log(this.player.score);
-                // let playerScoreCard = document.getElementById('player1').innerText = this.player.score;
-                return false;
-          }
-        });  
+                } else {
+                    gameScore2++;
+                    // this.player2.score += 1;
+                    // console.log(this.player2.score);
+                    // let playerScoreCard2 = document.getElementById('player2').innerText = this.player2.score;
+                    return false;
+            }
+            });  
 
-        //player2collision
-        this.foods = this.foods.filter((food) => {
-            if (!food.collision(this.player2)) {
-                if (gameScore2 >= winScore) {
-                    game.winPlayer2();
-                }
-              return true;
-            } else {
-                gameScore2++;
-                // this.player2.score += 1;
-                // console.log(this.player2.score);
-                // let playerScoreCard2 = document.getElementById('player2').innerText = this.player2.score;
-                return false;
-          }
-        });  
+    // ===========================================================================
+        //obstacles draw
+            if (frameCount % 2000 === 0 ) {
+                // console.log('DAGGERTIME')
+                this.daggers.push(new Dagger(this.daggerImage));
+            }
+            this.daggers.forEach(function(dagger){
+                dagger.drawFood();
+            });
+            
+            if (frameCount % 2000 === 0 ) {
+                // console.log('CLEAAAAAVEEEERRRR')
+                this.cleavers.push(new Cleaver(this.cleaverImage));
+            }
+            this.cleavers.forEach(function(cleaver){
+                cleaver.drawFood();
+            });
 
-// ===========================================================================
-    //obstacles draw
-        if (frameCount % 2000 === 0 ) {
-            // console.log('DAGGERTIME')
-            this.daggers.push(new Dagger(this.daggerImage));
-        }
-        this.daggers.forEach(function(dagger){
-            dagger.drawFood();
-        });
-        
-        if (frameCount % 2000 === 0 ) {
-            // console.log('CLEAAAAAVEEEERRRR')
-            this.cleavers.push(new Cleaver(this.cleaverImage));
-        }
-        this.cleavers.forEach(function(cleaver){
-            cleaver.drawFood();
-        });
+        //collisions
+            //player1collision
+            this.daggers = this.daggers.filter((dagger) => {
+                if (!dagger.collision(this.player)) {
+                return true;
+                } else {
+                    gameScore1--;
+                    // this.player.score -= 1;
+                    // let playerScoreCard = document.getElementById('player1').innerText = this.player.score;
+                    return false;
+            }
+            });
+            this.cleavers = this.cleavers.filter((cleaver) => {
+                if (!cleaver.collision(this.player)) {
+                return true;
+                } else {
+                    gameScore1--;
+                    // this.player.score -= 1;
+                    // let playerScoreCard = document.getElementById('player1').innerText = this.player.score;
+                    return false;
+            }
+            });    
 
-    //collisions
-        //player1collision
-        this.daggers = this.daggers.filter((dagger) => {
-            if (!dagger.collision(this.player)) {
-              return true;
-            } else {
-                gameScore1--;
-                // this.player.score -= 1;
-                // let playerScoreCard = document.getElementById('player1').innerText = this.player.score;
-                return false;
-          }
-        });
-        this.cleavers = this.cleavers.filter((cleaver) => {
-            if (!cleaver.collision(this.player)) {
-              return true;
-            } else {
-                gameScore1--;
-                // this.player.score -= 1;
-                // let playerScoreCard = document.getElementById('player1').innerText = this.player.score;
-                return false;
-          }
-        });    
-
-        //player2collision
-        this.daggers = this.daggers.filter((dagger) => {
-            if (!dagger.collision(this.player2)) {
-              return true;
-            } else {
-                gameScore2--;
-                // this.player2.score -= 1;
-                // let playerScoreCard2 = document.getElementById('player2').innerText = this.player2.score;
-                return false;
-          }
-        }); 
-        this.cleavers = this.cleavers.filter((cleaver) => {
-            if (!cleaver.collision(this.player2)) {
-              return true;
-            } else {
-                gameScore2--;
-                // this.player2.score -= 1;
-                // let playerScoreCard2 = document.getElementById('player2').innerText = this.player2.score;
-                return false;
-          }
-        });  
+            //player2collision
+            this.daggers = this.daggers.filter((dagger) => {
+                if (!dagger.collision(this.player2)) {
+                return true;
+                } else {
+                    gameScore2--;
+                    // this.player2.score -= 1;
+                    // let playerScoreCard2 = document.getElementById('player2').innerText = this.player2.score;
+                    return false;
+            }
+            }); 
+            this.cleavers = this.cleavers.filter((cleaver) => {
+                if (!cleaver.collision(this.player2)) {
+                return true;
+                } else {
+                    gameScore2--;
+                    // this.player2.score -= 1;
+                    // let playerScoreCard2 = document.getElementById('player2').innerText = this.player2.score;
+                    return false;
+            }
+            });  
+    }
 
 // ===========================================================================
         //top border
@@ -198,15 +228,18 @@ class Game {
 // ===========================================================================
 
     winPlayer1() {
-        frameRate(0);       
+        frameRate(0);
+        console.log( `^win menu gameState: ${gameState} (Should be 2)`) 
         this.winRectangle();
+        textAlign(CENTER,CENTER);
         text(`Gingercat wins! 
         Press any key to replay the game`, width/2, height/2);
-        textAlign(CENTER,CENTER);
     }
 
     winPlayer2() {
-        frameRate(0);       
+        // gameState = 1;
+        frameRate(0);   
+        console.log( `^win menu gameState: ${gameState} (Should be 2)`)     
         this.winRectangle();
         textAlign(CENTER,CENTER);
         text(`Void cat wins! 
