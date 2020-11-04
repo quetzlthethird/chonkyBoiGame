@@ -1,3 +1,10 @@
+/* stroke(243,106,39); //orange = #f36a27
+#a03317 //darker orange
+stroke(60,31,62); //light dark purple
+fill(19,17,28) // dark purple
+#070203  // dark-dark purple
+fill(255, 255, 255); // white */
+
 body {
     background-color: #070203 ;
     border: 2px solid black;
@@ -6,23 +13,19 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* font-family: 'Turret Road', cursive; */
 }
 
 h1  {
     text-align: center;
     font-size: 36px;
+    /* font-family: 'Turret Road', cursive; */
 }
 
-/* remove once .innertext is removed */
-section {
-    text-align: center;
-    font-size: 1px;
-}
-
-canvas {
+/* canvas {
     border-radius: 12px;
-    margin: 2vh;
-  }
+    margin: 1vh;
+  }  */
 
 .gametitle {
     color: white;

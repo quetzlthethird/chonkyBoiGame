@@ -1,4 +1,5 @@
 const game = new Game();
+let running = true;
 
 function preload() {
   game.preloadGame();
@@ -37,6 +38,9 @@ function draw() {
 //   }
   
 function keyPressed(){ 
+    
+    // if running = !running
+    
     //player1 = arrows
     if (keyCode === 39) {
         clear();
@@ -68,5 +72,8 @@ function keyPressed(){
     }
     
 }
+// function update(){
+//     if (!running) return 
+// }
 
 

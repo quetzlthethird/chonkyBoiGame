@@ -43,25 +43,37 @@ class Game {
         this.player2.drawPlayer();
         // this.BackgroundBorder.drawBorder();
 
-        stroke('#13111c');
-        fill (0,0,0,0);
-        strokeWeight(50);
-        rect(-50, 0, 1200, 800, 20, 20, 20 ,20);
+// ===========================================================================        
+        //player 1 score
+        // fill (243,106,39); //orange box
+        // // strokeWeight(50);
+        // rect(20, 0, 220, 80, 20, 20, 20 ,20);
+        // strokeWeight(0); 
 
-        strokeWeight(0);
-        fill(19,17,28);
-        rect(30, 20, 175, 50, 10, 10, 20 ,20);
+        stroke(60,31,62); // light dark purple under layer
+        strokeWeight(5); 
+        fill(19,17,28); 
+        rect(30, 20, 200, 50, 10, 10, 20 ,20); 
+        strokeWeight(0); // removes the stroke from the text
+
         fill(255, 255, 255);
         textSize(25);
-        text(`Gingercat: ${gameScore1}`, 50, 50);
-
+        // fill(243,106,39);
+        // // strokeWeight(1);
+        text(`Gingerboy: ${gameScore1}`, 55, 50);
+        
         //player 2 score
+        stroke(60,31,62); // add a stroke around rect with color white
+        strokeWeight(5); // thickness 
         fill(19,17,28);
-        rect(800, 20, 175, 50, 10, 10, 20 ,20);
+        rect(775, 20, 200, 50, 10, 10, 20 ,20);
+        strokeWeight(0); 
+
         fill(255, 255, 255);
         textSize(25);
-        text(`Blackcat: ${gameScore2}`, 825, 50);
+        text(`Black cat: ${gameScore2}`, 810, 50);
 
+// ===========================================================================
         //burgers from sky
         if (frameCount % 100 === 0 ) {
             // console.log('burgertime')
@@ -75,6 +87,7 @@ class Game {
         this.foods = this.foods.filter((food) => {
             if (!food.collision(this.player)) {
                 if (gameScore1 === 2) {
+                    // clear();
                     game.winPlayer1();
                 }  
                 return true;
@@ -102,16 +115,26 @@ class Game {
                 return false;
           }
         });  
-        
 
-        //daggers from right side
-        if (frameCount % 180 === 0 ) {
-            console.log('DAGGERTIME')
+// ===========================================================================
+    //obstacles draw
+        if (frameCount % 2000 === 0 ) {
+            // console.log('DAGGERTIME')
             this.daggers.push(new Dagger(this.daggerImage));
         }
         this.daggers.forEach(function(dagger){
             dagger.drawFood();
         });
+        
+        if (frameCount % 2000 === 0 ) {
+            // console.log('CLEAAAAAVEEEERRRR')
+            this.cleavers.push(new Cleaver(this.cleaverImage));
+        }
+        this.cleavers.forEach(function(cleaver){
+            cleaver.drawFood();
+        });
+
+    //collisions
         //player1collision
         this.daggers = this.daggers.filter((dagger) => {
             if (!dagger.collision(this.player)) {
@@ -122,7 +145,18 @@ class Game {
                 // let playerScoreCard = document.getElementById('player1').innerText = this.player.score;
                 return false;
           }
-        });  
+        });
+        this.cleavers = this.cleavers.filter((cleaver) => {
+            if (!cleaver.collision(this.player)) {
+              return true;
+            } else {
+                gameScore1--;
+                // this.player.score -= 1;
+                // let playerScoreCard = document.getElementById('player1').innerText = this.player.score;
+                return false;
+          }
+        });    
+
         //player2collision
         this.daggers = this.daggers.filter((dagger) => {
             if (!dagger.collision(this.player2)) {
@@ -133,29 +167,7 @@ class Game {
                 // let playerScoreCard2 = document.getElementById('player2').innerText = this.player2.score;
                 return false;
           }
-        });  
-
-        //cleavers from left side
-        if (frameCount % 180 === 0 ) {
-            console.log('CLEAAAAAVEEEERRRR')
-            this.cleavers.push(new Cleaver(this.cleaverImage));
-        }
-        this.cleavers.forEach(function(cleaver){
-            cleaver.drawFood();
-        });
-
-        //player1collision
-        this.cleavers = this.cleavers.filter((cleaver) => {
-            if (!cleaver.collision(this.player)) {
-              return true;
-            } else {
-                gameScore1--;
-                // this.player.score -= 1;
-                // let playerScoreCard = document.getElementById('player1').innerText = this.player.score;
-                return false;
-          }
-        });  
-        //player2collision
+        }); 
         this.cleavers = this.cleavers.filter((cleaver) => {
             if (!cleaver.collision(this.player2)) {
               return true;
@@ -167,21 +179,33 @@ class Game {
           }
         });  
 
+// ===========================================================================
+        //top border
+        stroke('#13111c');
+        fill (0,0,0,0);
+        strokeWeight(50);
+        rect(-50, 0, 1200, 800, 20, 20, 20 ,20);
+        strokeWeight(0); 
+    
     }  //end draw  
-
+// ===========================================================================
 
     winPlayer1() {
+        // clear();
+        noLoop();
         frameRate(0);       
         this.winRectangle();
         text(`Gingercat wins! 
         Press any key to replay the game`, width/2, height/2);
-        
-        // game.setupGame();
+        textAlign(50 ,50);
+        game.preloadGame();
+        game.setupGame();
     }
 
     winPlayer2() {
         frameRate(0);       
         this.winRectangle();
+        textAlign(50 ,50);
         text(`Blackcat wins! 
         Press any key to replay the game`, width/2, height/2);
         
@@ -189,7 +213,7 @@ class Game {
     }
 
     winRectangle (){
-        fill(0,0,0);
+        fill(60,31,62);
         rect(width/3, height/3, 333, 267, 20, 20, 20, 20);
         fill(255, 255, 255, 100);
         textSize(48);
