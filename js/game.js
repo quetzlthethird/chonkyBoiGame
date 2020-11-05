@@ -2,7 +2,7 @@ let gameScore1 = 0;
 let gameScore2 = 0;
 let zeroPoints = 0;
 let fontGameStyle
-let winScore = 10;
+let winScore = 1;
 let gameState = 0;
 // 0 = start menu
 // 1 = game running
@@ -15,9 +15,6 @@ class Game {
         this.foods = [];
         this.daggers = [];
         this.cleavers = [];
-        // this.peaches 
-        // explode_sprite_sheet = loadSpriteSheet('./assets/characters/pipo-nekonin002.png',171,158,11 )
-
     }
     
     preloadGame() {
@@ -31,7 +28,10 @@ class Game {
         
         this.playerImageJump = loadImage("./assets/gingerJump.png");
         this.player2ImageJump = loadImage("./assets/pepperJump.png");
-        // peachesGif = loadImage("./assets/peaches.gif");
+
+        this.startingImage = loadImage("./assets/catbag.png");
+        this.gingerSitRight = loadImage("./assets/gingerSitRight.png");
+        this.pepperSitLeft = loadImage("./assets/pepperSitRight.png")
     }
 
     setupGame() {
@@ -62,16 +62,45 @@ class Game {
     
     drawGame() {
         if (gameState === 0) {
-            this.winRectangle();
-            fill(255, 255, 255);
-            textSize(25);
+            
 
+            //rgb(252,183,82) light orange
+// #a03317 //darker orange  rgb(243,106,39)
+// rgb(5,44,70) blue
+//rgb(37,26,46) purple
+// stroke(60,31,62); //light dark purple
+// fill(19,17,28) // dark purple
+// #070203  // dark-dark purple
+// fill(255, 255, 255); // white */
+
+
+            stroke(252,183,82); //Lorange
+            strokeWeight(16); 
+            fill(243,106,39); //orange
+            rect(-20, 175, 1300, 450, 20, 20, 20, 20);
+
+            stroke(5,44,70); //blue
+            strokeWeight(16); 
+            fill(60,31,62); //LDpur
+            rect(-20, 212, 1300, 375, 20, 20, 20, 20);
+
+            stroke(19,17,28); //Dpur
+            strokeWeight(20);            
+            fill(7,2,3); //DDpur //CHANGE
+            rect(-20, 250, 1300, 300, 20, 20, 20, 20);
+            strokeWeight(0);
+
+
+            fill(255, 255, 255);
             textSize (50)
             textAlign (CENTER,CENTER);
             text(`Time to start meow`, width/2, height/2.2)
             text(`Press space!`, width/2, height/1.85 )
-            this.player.drawPlayer();
-            this.player2.drawPlayer();
+            
+            // fill(60,31,62);
+            // circle(height/3, width/1.75, 215);
+            image(this.startingImage, 150, 375); //2.05
+
 
         } else {
             frameRate(60);
@@ -231,9 +260,12 @@ class Game {
 
     winPlayer1() {
         frameRate(0);
-        // console.log( `^win menu gameState: ${gameState} (Should be 2)`) 
+
 
         this.winRectangle();        
+        image(this.gingerSitRight, 100, 375); //2.05
+        image(this.playerImageJump, 715, 260); //2.05
+
         textAlign(CENTER,CENTER);
         // stroke(255,255,255);
         // strokeWeight(1)
@@ -249,27 +281,38 @@ class Game {
         frameRate(0);   
         console.log( `^win menu gameState: ${gameState} (Should be 2)`)     
         this.winRectangle();
+
+
+        image(this.pepperSitLeft, 100, 375); //2.05
+        image(this.player2ImageJump, 715, 260); //2.05
+
         textSize(66)
         text(`Void boy wins!`, width/2, height/2.15)
-        // strokeWeight(0)
         textSize(38);
         text(`To replay, press the spacebar`,width/2, height/1.75)
     }
 
     winRectangle (){
-        // fill(0,0,0,10 );
-        // rect(0,0,1200,800);
+        
+        fill(0,0,0, 99); //black
+        rect(0, 0, 1200,800);
 
-        stroke(243,106,39);
-        strokeWeight(5);
-        fill(60,31,62);
-        rect(215, height/3, width/1.75, 267, 20, 20, 20, 20);
+
+        stroke(252,183,82); //Lorange
+        strokeWeight(16); 
+        fill(243,106,39); //orange
+        rect(-20, 175, 1300, 450, 20, 20, 20, 20);
+
+        stroke(5,44,70); //blue
+        strokeWeight(16); 
+        fill(60,31,62); //LDpur
+        rect(-20, 212, 1300, 375, 20, 20, 20, 20);
+
+        stroke(19,17,28); //Dpur
+        strokeWeight(20);            
+        fill(7,2,3); //DDpur //CHANGE
+        rect(-20, 250, 1300, 300, 20, 20, 20, 20);
         strokeWeight(0);
-
-        fill(60,31,62);
-        circle(height/3, width/1.75, 215);
-        // loadImage("./assets/peaches.gif"), peachesGif => 
-        //     image(peachesGif, height/3, width/1.75);
 
         fill(255, 255, 255);
         textSize(48);

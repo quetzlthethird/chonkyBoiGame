@@ -4,7 +4,7 @@ class Player {
         this.imageJump = playerImageJump;
         this.height = 0;
         this.width = 0;
-        this.x = 0;
+        this.x = 100;
         this.y = height - this.height;
         this.gravity = 0.2;
         this.velocity = 0;
