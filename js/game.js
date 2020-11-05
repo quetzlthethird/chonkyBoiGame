@@ -62,44 +62,22 @@ class Game {
     
     drawGame() {
         if (gameState === 0) {
-            
 
-            //rgb(252,183,82) light orange
-// #a03317 //darker orange  rgb(243,106,39)
-// rgb(5,44,70) blue
-//rgb(37,26,46) purple
-// stroke(60,31,62); //light dark purple
-// fill(19,17,28) // dark purple
-// #070203  // dark-dark purple
-// fill(255, 255, 255); // white */
-
-
-            stroke(252,183,82); //Lorange
-            strokeWeight(16); 
-            fill(243,106,39); //orange
-            rect(-20, 175, 1300, 450, 20, 20, 20, 20);
-
-            stroke(5,44,70); //blue
-            strokeWeight(16); 
-            fill(60,31,62); //LDpur
-            rect(-20, 212, 1300, 375, 20, 20, 20, 20);
-
-            stroke(19,17,28); //Dpur
-            strokeWeight(20);            
-            fill(7,2,3); //DDpur //CHANGE
-            rect(-20, 250, 1300, 300, 20, 20, 20, 20);
-            strokeWeight(0);
-
-
+            this.winRectangle();
             fill(255, 255, 255);
             textSize (50)
             textAlign (CENTER,CENTER);
-            text(`Time to start meow`, width/2, height/2.2)
-            text(`Press space!`, width/2, height/1.85 )
+            textSize(16);
+            text(`
+            In a world ravaged by corruption and greed, a technical underworld emerged. These elite technomancers had little
+            in common except for their love of cheeseburgers. These they consumed and consumed and consumed. Those who could
+            not hack it were removed-forcibly- and those who remained; well, they earned their name: 
+            IRONHACKER`, width/2.25,290)
+            textSize (50)
+            text(`Time to play meow`, width/2, height/1.85)
+            text(`Press space!`, width/2, height/1.65 )
             
-            // fill(60,31,62);
-            // circle(height/3, width/1.75, 215);
-            image(this.startingImage, 150, 375); //2.05
+            image(this.startingImage, 140, 375); //2.05
 
 
         } else {
@@ -108,36 +86,34 @@ class Game {
     // ===========================================================================        
             fill (255,255,255,50); // dim the background
             strokeWeight(50);
-            rect(-50, 0, 1200, 800, 20, 20, 20 ,20);
+            rect(-50, 0, 1200, 700, 20, 20, 20 ,20);
 
             stroke(60,31,62); // border - light dark purple
             strokeWeight(50);
             fill (0,0,0,0);
-            rect(-50, 5, 1200, 800, 20, 20, 20 ,20);
+            rect(-50, 40, 1200, 700, 20, 20, 20 ,20);
             
+        // ===========================================================================                
+            //score area
             stroke(60,31,62); // light dark purple under p1 layer
-            strokeWeight(5); 
+            strokeWeight(10); 
             fill(19,17,28); 
-            rect(30, 20, 200, 50, 10, 10, 20 ,20); 
-            strokeWeight(0); // removes the stroke from the text
+            rect(30, 35, 200, 50, 10, 10, 20 ,20); 
+            // strokeWeight(0); // removes the stroke from the text
 
             stroke(60,31,62); // light dark purple under p2 layer
-            strokeWeight(5); 
-            strokeWeight(50);
-            fill (0,0,0,0);
-            rect(-50, 0, 1200, 800, 20, 20, 20 ,20);
-            // strokeWeight(0); // removes the stroke from the text
+            fill ( 0,0,0,0);
+            rect(-50, 20, 1200, 700, 20, 20, 20 ,20);
         
             stroke(60,31,62); // add a stroke around rect with color white
-            strokeWeight(5); // thickness 
             fill(19,17,28);
-            rect(775, 20, 200, 50, 10, 10, 20 ,20);
+            rect(775, 40, 200, 50, 10, 10, 20 ,20);
             strokeWeight(0); 
 
             fill(255, 255, 255);
             textSize(25);
-            text(`Gingerboy: ${gameScore1}`, 127, 40); 
-            text(`Void boy: ${gameScore2} `, 880 , 40);
+            text(`Gingerboy: ${gameScore1}`, 127, 60); 
+            text(`Void boy: ${gameScore2} `, 880 , 60);
 
 // ===========================================================================
             this.player.drawPlayer();
@@ -251,9 +227,20 @@ class Game {
         //top border
         stroke('#13111c');
         fill (0,0,0,0);
-        strokeWeight(50);
-        rect(-50, 0, 1200, 800, 20, 20, 20 ,20);
-        strokeWeight(0); 
+        strokeWeight(85);
+        rect(-50, 10, 1200,700, 20, 20, 20 ,20);
+        strokeWeight(0);
+
+        fill(255, 255, 255);
+        textSize (36);
+        textAlign (CENTER,CENTER);
+        textAlign(CENTER,CENTER) 
+        textFont(fontGameStyle)
+        text(`chonky boy         `, width/2,20);//🍔 😻<
+        textFont('Helvetica');
+        textSize (25);
+        text(`                      🍔 😻 `, width/2,28);//🍔 😻<
+        textFont(fontGameStyle)
     
     }  //end draw  
 // ===========================================================================
@@ -263,39 +250,37 @@ class Game {
 
 
         this.winRectangle();        
-        image(this.gingerSitRight, 100, 375); //2.05
-        image(this.playerImageJump, 715, 260); //2.05
+        image(this.playerImage, 725, 375); //2.05
+        image(this.playerImageJump, 180, 240); //2.05
 
         textAlign(CENTER,CENTER);
         // stroke(255,255,255);
         // strokeWeight(1)
         textSize(66)
-        text(`Gingercat wins!`, width/2, height/2.15)
-        textSize(38);
-        text(`To replay, press the spacebar`,width/2, height/1.75)
-        // to replay the game,
-        // press the spacebar `,width/2, height/2);
+        text(`Gingercat wins!`, width/2, height/2)
+        textSize(30);
+        textAlign(CENTER,CENTER);
+        text(`to replay, press the spacebar`, width/2, height/1.70);
     }
 
     winPlayer2() {
         frameRate(0);   
-        console.log( `^win menu gameState: ${gameState} (Should be 2)`)     
         this.winRectangle();
 
-
-        image(this.pepperSitLeft, 100, 375); //2.05
-        image(this.player2ImageJump, 715, 260); //2.05
+        image(this.pepperSitLeft, 150, 375); //2.05
+        image(this.player2ImageJump, 700, 240); //2.05
 
         textSize(66)
-        text(`Void boy wins!`, width/2, height/2.15)
-        textSize(38);
-        text(`To replay, press the spacebar`,width/2, height/1.75)
+        text(`Void boy wins!`, width/2, height/2)
+        textSize(30);
+        textAlign(CENTER,CENTER);
+        text(`to replay, press the spacebar`,width/2, height/1.70)
     }
 
     winRectangle (){
         
         fill(0,0,0, 99); //black
-        rect(0, 0, 1200,800);
+        rect(0, 0, 1200,700);
 
 
         stroke(252,183,82); //Lorange

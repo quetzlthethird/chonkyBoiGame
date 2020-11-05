@@ -13,17 +13,28 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* font-family: 'Turret Road', cursive; */
 }
 
 h1  {
-    text-align: center;
-    font-size: 36px;
-    font-family: 'Turret Road', cursive;
+    /* text-align: center; */
+    font-size: 1px;
+    
 }
 
 .gametitle {
-    color: white;
-    margin-top: 2vh;
-    border: 5px solid green;
+    color: black;
+    /* margin-top: 2vh; */
+    /* border: 5px solid green; */
   }
+
+#footer {
+    font-family: 'Turret Road', cursive;
+    color: white;
+    font-size: 36px;
+    /* margin-top: 2vh; */
+    border: 5px solid pink;
+    margin-left: 20vh;
+    margin-right: 20vh;
+    text-align: center;
+  }
+  

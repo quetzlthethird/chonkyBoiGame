@@ -18,8 +18,9 @@ function preload() {
 }
 
 function setup() {
-  const canvas = createCanvas(1000, 800);
-  canvas.style ('display','block');
+  const canvas = createCanvas(1000, 700);
+//   canvas.style ('display','block');
+  canvas.parent('canvas');
   game.setupGame();
 }
 
