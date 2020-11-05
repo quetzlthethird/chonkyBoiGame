@@ -5,13 +5,13 @@ const keys = {
     arrowJumpP1 : 87,
     arrowDownP1 : 83,
 
-    arrowLeftP2 :37, //arrows
-    arrowRightP2: 39,
-    arrowJumpP2 : 38,
-    arrowDownP2 : 40,
+    arrowLeftP2 :74, //arrows
+    arrowRightP2: 76,
+    arrowJumpP2 : 73,
+    arrowDownP2 : 75,
 
     arrowAttackerP1 : 69, //e
-    arrowAttackerP2 : 191, // / key
+    arrowAttackerP2 : 85, // / key
 
     restart: 32 //space
 }
@@ -92,8 +92,20 @@ function keyPressed()    {
             clear();
             game.player2.attack();
         }
+    } 
+    else if (gameState === 0) {
+        if (keyCode === keys.restart) { gameState = 3; }
+    } 
 
-    } else {
+    // else if (gameState === 3){
+    //     if (keyCode === keys.restart) {
+    //         game.setupGame();
+    //             game.drawGame();
+    //             gameState = 1;
+    //             console.log( `space changed ${gameState} (Should be now 1)`)
+    //     }
+    // } 
+    else {
         if (keyCode === keys.restart) {
                 game.setupGame();
                 game.drawGame();

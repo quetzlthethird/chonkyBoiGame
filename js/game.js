@@ -7,7 +7,7 @@ let gameState = 0;
 // 0 = start menu
 // 1 = game running
 // 2 = win menu
-// let peachesGif
+// 3 = how to play
 
 
 class Game {
@@ -64,6 +64,7 @@ class Game {
 
             this.winRectangle();
             fill(255, 255, 255);
+            image(this.startingImage, 155, 375); //2.05
             textSize (50)
             textAlign (CENTER,CENTER);
             textSize(16);
@@ -73,13 +74,94 @@ class Game {
             not hack it were removed-forcibly- and those who remained; well, they earned their name: 
             IRONHACKER`, width/2.25,290)
             textSize (50)
-            text(`Time to play meow`, width/2, height/1.85)
-            text(`Press space!`, width/2, height/1.65 )
+            text(`Time to play meow`, width/2, height/1.75)
+            text(`Press space!`, width/2, height/1.55 )
             
-            image(this.startingImage, 140, 375); //2.05
+            // image(this.startingImage, 140, 375); //2.05
 
 
-        } else {
+        } else if (gameState === 3){
+
+            stroke(5,44,70); //blue
+            strokeWeight(16); 
+            fill(60,31,62); //LDpur
+            rect(-20, 212, 1300, 375, 20, 20, 20, 20);
+    
+            stroke(19,17,28); //Dpur
+            strokeWeight(20);            
+            fill(7,2,3); //DDpur //CHANGE
+            rect(-20, 250, 1300, 300, 20, 20, 20, 20);
+            strokeWeight(0);
+//==================
+
+            // this.winRectangle();
+            fill(19,17,28); //Dpur 
+            rect(-10, 0 , 1200, 800);//width/2.85
+
+            stroke(243,106,39); //Orange
+            strokeWeight(5);        
+            fill(19,17,28); //Dpur 
+            rect(40, 175, 415, 350, 20, 20, 20, 20);
+            strokeWeight(0)
+            fill(255, 255, 255);
+            textSize (34)
+            textAlign(CENTER,CENTER)
+            text(`
+               Gingerboy's control: 
+
+            W
+            ↑
+            ← A   ↓   D →
+            S
+            
+            E to punch`, 155, 325)
+
+            stroke(109,206,188); //cyan
+            strokeWeight(5);        
+            fill(19,17,28); //Dpur 
+            rect(550, 175, 415, 350, 20, 20, 20, 20);
+            strokeWeight(0)
+            fill(255, 255, 255);
+            textSize (34)
+            textAlign(CENTER,CENTER)
+            text(`
+               Void boys's control: 
+
+            I
+            ↑
+            ← J   ↓   L →
+            K
+            
+            U to punch`,  660, 325)
+
+
+            fill(255, 255, 255);
+            textSize (50)
+            textAlign (CENTER,CENTER);
+           
+            // textSize(20);
+            // text(`
+            // Gingerboy is controlled with ASD, with E to attack
+            // Void boy is controlled with arrowkeys, with / to attack
+            
+
+            // First to ${winScore} wins!`, width/2.25,350)
+            // fill(19,17,28); //Dpur 
+            // rect(-10, 100 , 1200, 800, 20, 20, 20, 20);//width/2.85
+            // stroke(60,31,62); //ldp
+            // strokeWeight(5);        
+            // fill(19,17,28); //Dpur 
+            // rect(-10, 100 , 1200, 100, 20, 20, 20, 20);//width/2.85
+            strokeWeight(0);
+
+            fill(255, 255, 255);
+            textSize (50)
+            textAlign(CENTER)
+            text(`How to Play`, width/2, 110)
+            text(`To start the game, press the spacebar`, width/2, 600 )
+            
+
+        }   else {
             frameRate(60);
             this.background.drawBackground();
     // ===========================================================================        
@@ -235,10 +317,10 @@ class Game {
         textAlign (CENTER,CENTER);
         // textAlign(CENTER,CENTER) 
         textFont(fontGameStyle)
-        text(`chonky boy         `, width/2,20);//🍔 😻<
+        text(`    chonky boy         `, width/2,20);//🍔 😻<
         textFont('Helvetica');
         textSize (25);
-        text(`                      🍔 😻 `, width/2,28);//🍔 😻<
+        text(`                              🍔 😻 `, width/2,28);//🍔 😻<
         textFont(fontGameStyle)
     
     }  //end draw  
@@ -303,21 +385,6 @@ class Game {
         textAlign(CENTER,CENTER)
 
     }
-
-    // p1AttackSuccess(){
-    //     // stroke(252,183,82); //Lorange
-    //     // strokeWeight(16); 
-    //     // fill(243,106,39); //orange
-
-    //     rect(-20, 175, 1300, 450, 20, 20, 20, 20);
-    //     fill(255,255,255)
-    //     textSize(20);
-    //     text(`Gingerboy steals a point!`, width/2,height/2 );
-    // }
-    
-    // p1AttackFail(){
-    //     text(`Void boy is a poor boy`,50,400);
-    // }
     
 } //end class
   
