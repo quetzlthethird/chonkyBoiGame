@@ -282,7 +282,7 @@ class Game {
     winRectangle (){
         // fill(0,0,0,10 );
         // rect(0,0,1200,800);
-d
+        
         stroke(243,106,39);
         strokeWeight(5);
         fill(60,31,62);
