@@ -1,9 +1,10 @@
 class Player2 {
-    constructor(player2Image){
+    constructor(player2Image,player2ImageJump){
         this.image = player2Image;
-        this.height = 78;
-        this.width = 83;
-        this.x = 900;
+        this.imageJump = player2ImageJump
+        this.height = 0;
+        this.width = 0;
+        this.x = 850;
         this.y = height - this.height;
         this.gravity = 0.2;
         this.velocity = 0;
@@ -15,8 +16,9 @@ class Player2 {
         this.y += this.velocity;
         if (this.y >= height - this.height) {
             this.y = height - this.height;
+            this.image = game.player2Image
         }
-        image(this.image, this.x, this.y-25);
+        image(this.image, this.x, this.y-120, 61 ,80 );
     }
     moveLeft() {
         if (this.x >0){
@@ -40,7 +42,8 @@ class Player2 {
 
     jump() {
         if (this.y === height - this.height) {
-          this.velocity = -17;  //17
+            this.image = game.player2ImageJump;
+            this.velocity = -17;  //17
         //   console.log("this will be the jump");
         }
       }

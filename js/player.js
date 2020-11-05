@@ -1,22 +1,25 @@
 class Player {
-    constructor(playerImage){
+    constructor(playerImage,playerImageJump){
         this.image = playerImage;
-        this.height = 78;
-        this.width = 80;
+        this.imageJump = playerImageJump;
+        this.height = 0;
+        this.width = 0;
         this.x = 0;
         this.y = height - this.height;
         this.gravity = 0.2;
         this.velocity = 0;
         // this.score = 0;
     }
-
+ 
     drawPlayer(){
         this.velocity += this.gravity;
         this.y += this.velocity;
         if (this.y >= height - this.height) {
             this.y = height - this.height;
+            this.image = game.playerImage
         }
-        image(this.image, this.x, this.y-25);
+        // if (this.y = 600)
+        image(this.image, this.x, this.y-120, 61, 80);
     }
     moveLeft() {
         if (this.x >0){
@@ -40,7 +43,10 @@ class Player {
 
     jump() {
         if (this.y === height - this.height) {
-          this.velocity = -17;  //17
+            this.image = game.playerImageJump;
+        //    image("./assets/gingerJump.png", this.x, this.y);
+            // this.image = this.imageJump;
+            this.velocity = -17;  //17
         //   console.log("this will be the jump");
         }
       }
