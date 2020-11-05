@@ -2,7 +2,7 @@ let gameScore1 = 0;
 let gameScore2 = 0;
 let zeroPoints = 0;
 let fontGameStyle
-let winScore = 100;
+let winScore = 1;
 let gameState = 0;
 // 0 = start menu
 // 1 = game running
@@ -18,13 +18,13 @@ class Game {
     }
     
     preloadGame() {
-        fontGameStyle = loadFont("../../font/TurretRoad-ExtraBold.ttf");
-        this.playerImage = loadImage("../../assets/ginger.png");
-        this.player2Image = loadImage("../../assets/pepper.png");
-        this.burgerImage = loadImage("../../assets/burger2.png");
-        this.daggerImage = loadImage("../../assets/PixelArt.png");
-        this.cleaverImage = loadImage("../../assets/PikPng.com_cleaver-png_5503819.png"); // , speed: 1 
-        this.backgroundImage = loadImage("../../assets/cyberpunkbackground.png");
+        fontGameStyle = loadFont("./font/TurretRoad-ExtraBold.ttf");
+        this.playerImage = loadImage("./assets/ginger.png");
+        this.player2Image = loadImage("./assets/pepper.png");
+        this.burgerImage = loadImage("./assets/burger2.png");
+        this.daggerImage = loadImage("./assets/PixelArt.png");
+        this.cleaverImage = loadImage("./assets/PikPng.com_cleaver-png_5503819.png"); // , speed: 1 
+        this.backgroundImage = loadImage("./assets/cyberpunkbackground.png");
     }
 
     setupGame() {
@@ -61,8 +61,11 @@ class Game {
             this.winRectangle();
             fill(255, 255, 255);
             textSize(25);
+
+
             // fill(243,106,39);
             // // strokeWeight(1);
+            textSize (50)
             textAlign (CENTER,CENTER);
             text(`Time to start meow`, width/2, height/2.2)
             text(`Press space!`, width/2, height/1.85 )
@@ -251,10 +254,17 @@ class Game {
         console.log( `^win menu gameState: ${gameState} (Should be 2)`) 
         // console.log(typeof this.foods)
 
-        this.winRectangle();
+        this.winRectangle();        
         textAlign(CENTER,CENTER);
-        text(`Gingercat wins! 
-        Press any key to replay the game`, width/2, height/2);
+        // stroke(255,255,255);
+        // strokeWeight(1)
+        textSize(66)
+        text(`Gingercat wins!`, width/2, height/2.15)
+        // strokeWeight(0)
+        textSize(38);
+        text(`To replay, press the spacebar`,width/2, height/1.75)
+        // to replay the game,
+        // press the spacebar `,width/2, height/2);
     }
 
     winPlayer2() {
@@ -262,15 +272,27 @@ class Game {
         frameRate(0);   
         console.log( `^win menu gameState: ${gameState} (Should be 2)`)     
         this.winRectangle();
-        textAlign(CENTER,CENTER);
-        text(`Void cat wins! 
-        Press any key to replay the game`, width/2, height/2);
+        textSize(66)
+        text(`Void boy wins!`, width/2, height/2.15)
+        // strokeWeight(0)
+        textSize(38);
+        text(`To replay, press the spacebar`,width/2, height/1.75)
     }
 
     winRectangle (){
+        // fill(0,0,0,10 );
+        // rect(0,0,1200,800);
+d
+        stroke(243,106,39);
+        strokeWeight(5);
         fill(60,31,62);
-        rect(width/3, height/3, 333, 267, 20, 20, 20, 20);
-        fill(255, 255, 255, 100);
+        rect(215, height/3, width/1.75, 267, 20, 20, 20, 20);
+        strokeWeight(0);
+
+        fill(60,31,62);
+        circle(height/3, width/1.75, 215);
+
+        fill(255, 255, 255);
         textSize(48);
         textAlign(CENTER,CENTER)
     }
