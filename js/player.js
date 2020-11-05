@@ -1,10 +1,6 @@
 class Player {
-    constructor(playerImage,playerImageJump,gingerSitRight,p1OnFire){
+    constructor(playerImage){
         this.image = playerImage;
-        // this.imageRight = gingerSitRight;
-        // this.imageJump = playerImageJump;
-        // this.imageOnFire = p1OnFire;
-
         this.height = 0;
         this.width = 0;
         this.x = 100;
@@ -59,6 +55,6 @@ class Player {
             game.player2.onFire();
         }//if ennds
 
-    }//attack ends
+    }
 
 } //ends class

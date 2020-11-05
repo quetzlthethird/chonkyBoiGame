@@ -1,8 +1,8 @@
 let gameScore1 = 0;
 let gameScore2 = 0;
-let zeroPoints = 10;
+let zeroPoints = 0;
 let fontGameStyle
-let winScore = 100;
+let winScore = 10;
 let gameState = 0;
 // 0 = start menu
 // 1 = game running
@@ -77,9 +77,6 @@ class Game {
             text(`Time to play meow`, width/2, height/1.75)
             text(`Press space!`, width/2, height/1.55 )
             
-            // image(this.startingImage, 140, 375); //2.05
-
-
         } else if (gameState === 3){
 
             stroke(5,44,70); //blue
@@ -139,29 +136,16 @@ class Game {
             textSize (50)
             textAlign (CENTER,CENTER);
            
-            // textSize(20);
-            // text(`
-            // Gingerboy is controlled with ASD, with E to attack
-            // Void boy is controlled with arrowkeys, with / to attack
-            
-
-            // First to ${winScore} wins!`, width/2.25,350)
-            // fill(19,17,28); //Dpur 
-            // rect(-10, 100 , 1200, 800, 20, 20, 20, 20);//width/2.85
-            // stroke(60,31,62); //ldp
-            // strokeWeight(5);        
-            // fill(19,17,28); //Dpur 
-            // rect(-10, 100 , 1200, 100, 20, 20, 20, 20);//width/2.85
             strokeWeight(0);
 
             fill(255, 255, 255);
             textSize (50)
             textAlign(CENTER)
-            text(`How to Play`, width/2, 110)
+            text(`First to ${winScore} points wins!`, width/2, 110)
             text(`To start the game, press the spacebar`, width/2, 600 )
             
 
-        }   else {
+        } else {
             frameRate(60);
             this.background.drawBackground();
     // ===========================================================================        
@@ -242,7 +226,7 @@ class Game {
 
     // ===========================================================================
         //obstacles draw
-            if (frameCount % 2000 === 0 ) {
+            if (frameCount % 100 === 0 ) {
                 // console.log('DAGGERTIME')
                 this.daggers.push(new Dagger(this.daggerImage));
             }
@@ -250,7 +234,7 @@ class Game {
                 dagger.drawFood();
             });
             
-            if (frameCount % 2000 === 0 ) {
+            if (frameCount % 600 === 0 ) {
                 // console.log('CLEAAAAAVEEEERRRR')
                 this.cleavers.push(new Cleaver(this.cleaverImage));
             }

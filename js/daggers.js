@@ -3,8 +3,8 @@ class Dagger {
         this.image = daggerImage;
         this.x = 1000
         this.y = (Math.random() * width);
-        this.width = 148;
-        this.height = 118;
+        this.width = 75;
+        this.height = 59;
     }
 
     collision(playerInfo)  {

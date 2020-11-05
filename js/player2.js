@@ -1,9 +1,6 @@
 class Player2 {
-    constructor(player2Image,player2ImageJump,p2OnFire){
+    constructor(player2Image){
         this.image = player2Image;
-        // this.imageJump = player2ImageJump;
-        // this.imageOnFire = p2OnFire;
-
         this.height = 0;
         this.width = 0;
         this.x = 850;
@@ -54,7 +51,6 @@ class Player2 {
     attack (){
         console.log(this.x);
         if (dist(this.x,this.y, game.player2.x, game.player2.y)<100 && gameScore1 > 0) {
-        // if (dist(this.x, this.y, game.player1.x,game.player1.y) < 100 && gameScore1 > 0) {
             gameScore2++;
             gameScore1--;
             game.player.onFire();
