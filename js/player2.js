@@ -1,7 +1,9 @@
 class Player2 {
-    constructor(player2Image,player2ImageJump){
+    constructor(player2Image,player2ImageJump,p2OnFire){
         this.image = player2Image;
-        this.imageJump = player2ImageJump
+        // this.imageJump = player2ImageJump;
+        // this.imageOnFire = p2OnFire;
+
         this.height = 0;
         this.width = 0;
         this.x = 850;
@@ -17,38 +19,47 @@ class Player2 {
         if (this.y >= height - this.height) {
             this.y = height - this.height;
             this.image = game.player2Image
-        }
+        } 
         image(this.image, this.x, this.y-120, 61 ,80 );
     }
     moveLeft() {
         if (this.x >0){
         this.x -= 100
         }
-        // this.image = loadImage('assets/character-left.png');
     }
     moveRight() {
         if (this.x < 950-this.width){
         this.x += 100
         }
-        // this.image = loadImage('assets/character-right.png');
     }
 
-    // addPoint() {
-    //     let playerScoreCard2 = document.getElementById('player2')
-    //     // console.log(playerScoreCard);
-    //     playerScoreCard2.innerText = this.score;
-    //     // console.log(playerScore);
-    // }
-
     jump() {
-        if (this.y === height - this.height) {
+        if (this.y <= height - this.height) {
             this.image = game.player2ImageJump;
-            this.velocity = -17;  //17
-        //   console.log("this will be the jump");
+            this.velocity = -15;  //17
         }
       }
 
     fastDown() {
         this.velocity += 10 ;  //17
     } 
+
+    onFire() {
+        if (this.y === height - this.height) {
+            this.image = game.p2OnFire;
+            this.velocity = -15;  //17
+        }
+    }
+
+    attack (){
+        console.log(this.x);
+        if (dist(this.x,this.y, game.player2.x, game.player2.y)<100 && gameScore1 > 0) {
+        // if (dist(this.x, this.y, game.player1.x,game.player1.y) < 100 && gameScore1 > 0) {
+            gameScore2++;
+            gameScore1--;
+            game.player.onFire();
+        }//if ennds
+    }
+    
+      
 } //ends class

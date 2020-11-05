@@ -1,8 +1,8 @@
 let gameScore1 = 0;
 let gameScore2 = 0;
-let zeroPoints = 0;
+let zeroPoints = 10;
 let fontGameStyle
-let winScore = 1;
+let winScore = 100;
 let gameState = 0;
 // 0 = start menu
 // 1 = game running
@@ -15,6 +15,7 @@ class Game {
         this.foods = [];
         this.daggers = [];
         this.cleavers = [];
+        // this.fire = fire;
     }
     
     preloadGame() {
@@ -31,7 +32,9 @@ class Game {
 
         this.startingImage = loadImage("./assets/catbag.png");
         this.gingerSitRight = loadImage("./assets/gingerSitRight.png");
-        this.pepperSitLeft = loadImage("./assets/pepperSitRight.png")
+        this.pepperSitLeft = loadImage("./assets/pepperSitRight.png");
+        this.p1OnFire = loadImage("./assets/p1OnFire.png");
+        this.p2OnFire = loadImage("./assets/p2OnFire.png");
     }
 
     setupGame() {
@@ -39,10 +42,6 @@ class Game {
         gameScore1 = zeroPoints;
         gameScore2 = zeroPoints;
         textFont(fontGameStyle)
-        console.log("this is the game setup");
-        // loadImage("./assets/peaches.gif"), peachesGif => 
-        //     image(peachesGif, height/3, width/1.75);
-
 
         this.player = new Player(this.playerImage);
         this.player2 = new Player2(this.player2Image);
@@ -93,7 +92,7 @@ class Game {
             fill (0,0,0,0);
             rect(-50, 40, 1200, 700, 20, 20, 20 ,20);
             
-        // ===========================================================================                
+    // ===========================================================================                
             //score area
             stroke(60,31,62); // light dark purple under p1 layer
             strokeWeight(10); 
@@ -234,7 +233,7 @@ class Game {
         fill(255, 255, 255);
         textSize (36);
         textAlign (CENTER,CENTER);
-        textAlign(CENTER,CENTER) 
+        // textAlign(CENTER,CENTER) 
         textFont(fontGameStyle)
         text(`chonky boy         `, width/2,20);//🍔 😻<
         textFont('Helvetica');
@@ -250,7 +249,7 @@ class Game {
 
 
         this.winRectangle();        
-        image(this.playerImage, 725, 375); //2.05
+        image(this.p2OnFire, 725, 375); //2.05
         image(this.playerImageJump, 180, 240); //2.05
 
         textAlign(CENTER,CENTER);
@@ -267,7 +266,7 @@ class Game {
         frameRate(0);   
         this.winRectangle();
 
-        image(this.pepperSitLeft, 150, 375); //2.05
+        image(this.p1OnFire, 150, 375); //2.05
         image(this.player2ImageJump, 700, 240); //2.05
 
         textSize(66)
@@ -304,6 +303,21 @@ class Game {
         textAlign(CENTER,CENTER)
 
     }
+
+    // p1AttackSuccess(){
+    //     // stroke(252,183,82); //Lorange
+    //     // strokeWeight(16); 
+    //     // fill(243,106,39); //orange
+
+    //     rect(-20, 175, 1300, 450, 20, 20, 20, 20);
+    //     fill(255,255,255)
+    //     textSize(20);
+    //     text(`Gingerboy steals a point!`, width/2,height/2 );
+    // }
+    
+    // p1AttackFail(){
+    //     text(`Void boy is a poor boy`,50,400);
+    // }
     
 } //end class
   

@@ -1,16 +1,19 @@
 const game = new Game();
 const keys = {
-    arrowLeftP1 : 65,
+    arrowLeftP1 : 65, //asd
     arrowRightP1 : 68,
     arrowJumpP1 : 87,
     arrowDownP1 : 83,
 
-    arrowLeftP2 :37,
+    arrowLeftP2 :37, //arrows
     arrowRightP2: 39,
     arrowJumpP2 : 38,
     arrowDownP2 : 40,
 
-    restart: 32
+    arrowAttackerP1 : 69, //e
+    arrowAttackerP2 : 191, // / key
+
+    restart: 32 //space
 }
 
 function preload() {
@@ -76,11 +79,20 @@ function keyPressed()    {
             clear();
             game.player.fastDown();
         }
-
         if (keyCode === keys.arrowDownP2) {
             clear();
             game.player2.fastDown();
         }
+        
+        if (keyCode === keys.arrowAttackerP1) {
+            clear();
+            game.player.attack();
+        }
+        if (keyCode === keys.arrowAttackerP2) {
+            clear();
+            game.player2.attack();
+        }
+
     } else {
         if (keyCode === keys.restart) {
                 game.setupGame();
